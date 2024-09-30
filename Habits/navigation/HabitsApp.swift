@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct HabitsApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .fontDesign(.rounded)
         }
+        .modelContainer(for: Habit.self, inMemory: true)
     }
 }

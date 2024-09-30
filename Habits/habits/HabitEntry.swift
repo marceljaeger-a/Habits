@@ -10,7 +10,7 @@ import SwiftData
 
 @Model class HabitEntry {
     var date: Date
-    @Relationship var habit: Habit
+    @Relationship(deleteRule: .nullify) var habit: Habit
     var created: Date
     
     init(date: Date, habit: Habit) {

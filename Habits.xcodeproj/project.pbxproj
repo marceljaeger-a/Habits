@@ -6,17 +6,34 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9F0F44142CA43FFA00DF5F98 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F440A2CA43FFA00DF5F98 /* Habit.swift */; };
+		9F0F44152CA43FFA00DF5F98 /* HabitEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F440B2CA43FFA00DF5F98 /* HabitEntry.swift */; };
+		9F0F44162CA43FFA00DF5F98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F440D2CA43FFA00DF5F98 /* ContentView.swift */; };
+		9F0F44172CA43FFA00DF5F98 /* HabitsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F440E2CA43FFA00DF5F98 /* HabitsApp.swift */; };
+		9F0F44182CA43FFA00DF5F98 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F0F44102CA43FFA00DF5F98 /* Preview Assets.xcassets */; };
+		9F0F44192CA43FFA00DF5F98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F0F44122CA43FFA00DF5F98 /* Assets.xcassets */; };
+		9F0F441B2CA4400900DF5F98 /* HabitsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F441A2CA4400900DF5F98 /* HabitsListView.swift */; };
+		9F0F441D2CA4408400DF5F98 /* HabitListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F441C2CA4408400DF5F98 /* HabitListRowView.swift */; };
+		9F0F443E2CA70C9400DF5F98 /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F443D2CA70C9400DF5F98 /* AddHabitView.swift */; };
+		9F0F44402CA715CD00DF5F98 /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F443F2CA715CD00DF5F98 /* HabitDetailView.swift */; };
+		9F0F44422CA8927A00DF5F98 /* TimeProposalMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F44412CA8927A00DF5F98 /* TimeProposalMenu.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		9F0F43EA2CA400AE00DF5F98 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F0F440A2CA43FFA00DF5F98 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		9F0F440B2CA43FFA00DF5F98 /* HabitEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEntry.swift; sourceTree = "<group>"; };
+		9F0F440D2CA43FFA00DF5F98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9F0F440E2CA43FFA00DF5F98 /* HabitsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsApp.swift; sourceTree = "<group>"; };
+		9F0F44102CA43FFA00DF5F98 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9F0F44122CA43FFA00DF5F98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9F0F441A2CA4400900DF5F98 /* HabitsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsListView.swift; sourceTree = "<group>"; };
+		9F0F441C2CA4408400DF5F98 /* HabitListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListRowView.swift; sourceTree = "<group>"; };
+		9F0F443D2CA70C9400DF5F98 /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
+		9F0F443F2CA715CD00DF5F98 /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
+		9F0F44412CA8927A00DF5F98 /* TimeProposalMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeProposalMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		9F0F43EC2CA400AE00DF5F98 /* Habits */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Habits;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		9F0F43E72CA400AE00DF5F98 /* Frameworks */ = {
@@ -32,7 +49,7 @@
 		9F0F43E12CA400AE00DF5F98 = {
 			isa = PBXGroup;
 			children = (
-				9F0F43EC2CA400AE00DF5F98 /* Habits */,
+				9F0F44132CA43FFA00DF5F98 /* Habits */,
 				9F0F43EB2CA400AE00DF5F98 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +60,48 @@
 				9F0F43EA2CA400AE00DF5F98 /* Habits.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9F0F440C2CA43FFA00DF5F98 /* habits */ = {
+			isa = PBXGroup;
+			children = (
+				9F0F440A2CA43FFA00DF5F98 /* Habit.swift */,
+				9F0F440B2CA43FFA00DF5F98 /* HabitEntry.swift */,
+				9F0F441A2CA4400900DF5F98 /* HabitsListView.swift */,
+				9F0F443D2CA70C9400DF5F98 /* AddHabitView.swift */,
+				9F0F441C2CA4408400DF5F98 /* HabitListRowView.swift */,
+				9F0F443F2CA715CD00DF5F98 /* HabitDetailView.swift */,
+				9F0F44412CA8927A00DF5F98 /* TimeProposalMenu.swift */,
+			);
+			path = habits;
+			sourceTree = "<group>";
+		};
+		9F0F440F2CA43FFA00DF5F98 /* navigation */ = {
+			isa = PBXGroup;
+			children = (
+				9F0F440E2CA43FFA00DF5F98 /* HabitsApp.swift */,
+				9F0F440D2CA43FFA00DF5F98 /* ContentView.swift */,
+			);
+			path = navigation;
+			sourceTree = "<group>";
+		};
+		9F0F44112CA43FFA00DF5F98 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9F0F44102CA43FFA00DF5F98 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9F0F44132CA43FFA00DF5F98 /* Habits */ = {
+			isa = PBXGroup;
+			children = (
+				9F0F440F2CA43FFA00DF5F98 /* navigation */,
+				9F0F440C2CA43FFA00DF5F98 /* habits */,
+				9F0F44112CA43FFA00DF5F98 /* Preview Content */,
+				9F0F44122CA43FFA00DF5F98 /* Assets.xcassets */,
+			);
+			path = Habits;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +118,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				9F0F43EC2CA400AE00DF5F98 /* Habits */,
 			);
 			name = Habits;
 			packageProductDependencies = (
@@ -109,6 +165,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F0F44182CA43FFA00DF5F98 /* Preview Assets.xcassets in Resources */,
+				9F0F44192CA43FFA00DF5F98 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +177,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F0F441B2CA4400900DF5F98 /* HabitsListView.swift in Sources */,
+				9F0F44142CA43FFA00DF5F98 /* Habit.swift in Sources */,
+				9F0F443E2CA70C9400DF5F98 /* AddHabitView.swift in Sources */,
+				9F0F44422CA8927A00DF5F98 /* TimeProposalMenu.swift in Sources */,
+				9F0F441D2CA4408400DF5F98 /* HabitListRowView.swift in Sources */,
+				9F0F44152CA43FFA00DF5F98 /* HabitEntry.swift in Sources */,
+				9F0F44162CA43FFA00DF5F98 /* ContentView.swift in Sources */,
+				9F0F44402CA715CD00DF5F98 /* HabitDetailView.swift in Sources */,
+				9F0F44172CA43FFA00DF5F98 /* HabitsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +335,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.marceljaeger.Habits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -297,7 +364,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.marceljaeger.Habits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
