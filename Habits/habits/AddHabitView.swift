@@ -15,12 +15,16 @@ struct AddHabitView: View {
                 Section {
                     TextField("Title", text: $title)
                         .focused($focusedControl, equals: .titleTextField)
-                    
+                }
+                
+                Section("Notes & Reward") {
                     TextEditor(text: $notes)
                         .focused($focusedControl, equals: .notesTextEditor)
+                    
+                    TextField("Reward", text: $reward)
                 }
                
-                Section {
+                Section("Time") {
                     VStack {
                         TimeProposalMenu(value: $time)
                         
@@ -65,6 +69,7 @@ struct AddHabitView: View {
     @Environment(\.dismiss) private var dismissAction
     @State private var title: String = ""
     @State private var notes: String = ""
+    @State private var reward: String = ""
     @State private var time: Date = (Calendar.current.date(bySettingHour: 6, minute: 0, second: 0, of: .now) ?? .now)
     @FocusState private var focusedControl: FocuedControl?
     
@@ -81,7 +86,7 @@ struct AddHabitView: View {
         let minute = Calendar.current.component(.minute, from: time)
         
         print("Add new habit")
-        let habit = Habit(title: title, notes: notes, hour: hour, minute: minute, symbole: "tree")
+        let habit = Habit(title: title, notes: notes, reward: reward, hour: hour, minute: minute, symbole: "tree")
         modelContext.insert(habit)
         dismissAction()
     }

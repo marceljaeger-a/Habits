@@ -11,6 +11,7 @@ import SwiftData
 @Model final class Habit {
     var title: String
     var notes: String
+    var reward: String
     var hour: Int
     var minute: Int
     var second: Int
@@ -77,9 +78,19 @@ import SwiftData
     }
     
     
-    init(title: String, notes: String, hour: Int, minute: Int = 0, second: Int = 0, symbole: String, entries: Array<HabitEntry> = []) {
+    init(
+        title: String,
+        notes: String,
+        reward: String,
+        hour: Int,
+        minute: Int = 0,
+        second: Int = 0,
+        symbole: String,
+        entries: Array<HabitEntry> = []
+    ) {
         self.title = title
         self.notes = notes
+        self.reward = reward
         self.hour = hour
         self.minute = minute
         self.second = second

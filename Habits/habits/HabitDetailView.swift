@@ -13,11 +13,14 @@ struct HabitDetailView: View {
         Form {
             Section {
                 TextField("Title", text: $editedTitle)
-                
-                TextEditor(text: $editedNotes)
             }
             
-            Section {
+            Section("Notes & Reward") {
+                TextEditor(text: $editedNotes)
+                TextField("Reward", text: $editedReward)
+            }
+            
+            Section("Time") {
                 VStack {
                     TimeProposalMenu(value: $editedTime)
                     
@@ -61,6 +64,7 @@ struct HabitDetailView: View {
     @State private var isDeleteConfirmationDialogPresented = false
     @State private var editedTitle: String = ""
     @State private var editedNotes: String = ""
+    @State private var editedReward: String = ""
     @State private var editedTime: Date = .now
     
     private var haveValuesNoChanges: Bool {
@@ -76,6 +80,7 @@ struct HabitDetailView: View {
     private func onAppearAction() {
         self.editedTitle = habit.title
         self.editedNotes = habit.notes
+        self.editedReward = habit.reward
         self.editedTime = habit.time ?? .now
     }
     
