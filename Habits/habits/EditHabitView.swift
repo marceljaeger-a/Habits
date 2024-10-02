@@ -8,28 +8,51 @@
 import Foundation
 import SwiftUI
 
-struct HabitDetailView: View {
+struct EditHabitView: View {
     var body: some View {
         Form {
             Section {
-                TextField("Title", text: $editedTitle)
+                VStack(spacing: 25) {
+                    HabitSymbolePicker(value: $editedSymbole)
+                    
+                    TextField("Title", text: $editedTitle)
+                        .focused($focusedControl, equals: .titleTextField)
+                        .font(.title3.bold())
+                        .padding()
+                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 20))
+                }
+                .padding(.vertical, 5)
             }
             
-            Section("Notes & Reward") {
+            Section {
                 TextEditor(text: $editedNotes)
-                TextField("Reward", text: $editedReward)
+                    .overlay(alignment: .topLeading) {
+                        if focusedControl != .notesTextEditor && editedNotes.isEmpty {
+                            Text("Notes")
+                                .foregroundStyle(.tertiary)
+                                .padding(.vertical, 5)
+                        }
+                    }
+                    .focused($focusedControl, equals: .notesTextEditor)
             }
-            
-            Section("Time") {
+           
+            Section {
                 VStack {
                     TimeProposalMenu(value: $editedTime)
                     
-                    DatePicker("Time", selection: $editedTime, displayedComponents: .hourAndMinute)
+                    DatePicker("", selection: $editedTime, displayedComponents: .hourAndMinute)
                         .datePickerStyle(.wheel)
                 }
+                .padding(.vertical, 5)
+            }
+            
+            Section {
+                TextField("Reward", text: $editedReward)
             }
         }
         .formStyle(.grouped)
+        .navigationTitle("Edit habit")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 Button(action: presentDeleteCofirmationDialgo) {
@@ -50,26 +73,32 @@ struct HabitDetailView: View {
         } message: {
             Text("Do you really want to delete the habit, you can`t undo it?")
         }
-        .navigationTitle("Habit Detail")
-        .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: onAppearAction)
     }
     
     //MARK: - View Model
+    private enum FocuedControl {
+        case titleTextField
+        case notesTextEditor
+    }
     
     @Bindable var habit: Habit
     
     @Environment(\.dismiss) private var dismissAction
     @Environment(\.modelContext) private var modelContext
     @State private var isDeleteConfirmationDialogPresented = false
+    @State private var editedSymbole: HabitSymbole = .figureWalk
     @State private var editedTitle: String = ""
     @State private var editedNotes: String = ""
     @State private var editedReward: String = ""
     @State private var editedTime: Date = .now
+    @FocusState private var focusedControl: FocuedControl?
     
     private var haveValuesNoChanges: Bool {
+        guard editedSymbole == habit.symbole else { return false }
         guard editedTitle == habit.title else { return false }
         guard editedNotes == habit.notes else { return false }
+        guard editedReward == habit.reward else { return false }
         let hour = Calendar.current.component(.hour, from: editedTime)
         let minute = Calendar.current.component(.minute, from: editedTime)
         guard hour == habit.hour else { return false }
@@ -78,6 +107,7 @@ struct HabitDetailView: View {
     }
     
     private func onAppearAction() {
+        self.editedSymbole = habit.symbole
         self.editedTitle = habit.title
         self.editedNotes = habit.notes
         self.editedReward = habit.reward
@@ -98,6 +128,7 @@ struct HabitDetailView: View {
         let hour = Calendar.current.component(.hour, from: editedTime)
         let minute = Calendar.current.component(.minute, from: editedTime)
         
+        habit.symbole = editedSymbole
         habit.title = editedTitle
         habit.notes = editedNotes
         habit.hour = hour

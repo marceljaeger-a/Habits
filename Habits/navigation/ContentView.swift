@@ -13,7 +13,7 @@ struct ContentView: View {
         NavigationStack {
             HabitsListView()
                 .navigationDestination(for: Habit.self) { habit in
-                    HabitDetailView(habit: habit)
+                    EditHabitView(habit: habit)
                 }
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {

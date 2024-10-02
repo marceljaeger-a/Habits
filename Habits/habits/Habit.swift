@@ -15,7 +15,7 @@ import SwiftData
     var hour: Int
     var minute: Int
     var second: Int
-    var symbole: String
+    var symbole: HabitSymbole
     @Relationship(deleteRule: .cascade, inverse: \HabitEntry.habit) var entries: Array<HabitEntry>
     var created: Date
     
@@ -85,7 +85,7 @@ import SwiftData
         hour: Int,
         minute: Int = 0,
         second: Int = 0,
-        symbole: String,
+        symbole: HabitSymbole,
         entries: Array<HabitEntry> = []
     ) {
         self.title = title

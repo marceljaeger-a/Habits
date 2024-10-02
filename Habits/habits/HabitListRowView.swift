@@ -12,8 +12,7 @@ import SwiftData
 struct HabitListRowView: View {
     var body: some View {
         HStack {
-            Image(systemName: habit.symbole)
-                .font(.title)
+            habit.symbole.image.font(.title)
             
             Text(habit.title)
                 .font(.headline)
@@ -22,22 +21,6 @@ struct HabitListRowView: View {
             
             switch style {
             case .today:
-                
-                ZStack(alignment: .centerFirstTextBaseline) {
-                    Image(systemName: "flame")
-                        .foregroundStyle(.red)
-                    Image(systemName: "flame.fill")
-                        .foregroundStyle(.red)
-                    Text("\(habit.streak)")
-                        .font(.subheadline)
-                        .fontWeight(.heavy)
-                        .foregroundStyle(.white)
-                }
-                .imageScale(.large)
-                .font(.title)
-                
-            case .other:
-                
                 ZStack(alignment: .centerFirstTextBaseline) {
                     Image(systemName: "flame")
                         .foregroundStyle(.gray)
@@ -51,6 +34,19 @@ struct HabitListRowView: View {
                 .imageScale(.large)
                 .font(.title)
                 .onTapGesture(perform: addHabitEntry)
+            case .other:
+                ZStack(alignment: .centerFirstTextBaseline) {
+                    Image(systemName: "flame")
+                        .foregroundStyle(.red)
+                    Image(systemName: "flame.fill")
+                        .foregroundStyle(.red)
+                    Text("\(habit.streak)")
+                        .font(.subheadline)
+                        .fontWeight(.heavy)
+                        .foregroundStyle(.white)
+                }
+                .imageScale(.large)
+                .font(.title)
             }
         }
         .swipeActions {

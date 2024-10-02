@@ -13,29 +13,47 @@ struct AddHabitView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Title", text: $title)
-                        .focused($focusedControl, equals: .titleTextField)
+                    VStack(spacing: 25) {
+                        HabitSymbolePicker(value: $symbole)
+                        
+                        TextField("Title", text: $title)
+                            .focused($focusedControl, equals: .titleTextField)
+                            .font(.title3.bold())
+                            .padding()
+                            .background(.ultraThinMaterial, in: .rect(cornerRadius: 20))
+                    }
+                    .padding(.vertical, 5)
                 }
                 
-                Section("Notes & Reward") {
+                Section {
                     TextEditor(text: $notes)
+                        .overlay(alignment: .topLeading) {
+                            if focusedControl != .notesTextEditor && notes.isEmpty {
+                                Text("Notes")
+                                    .foregroundStyle(.tertiary)
+                                    .padding(.vertical, 5)
+                            }
+                        }
                         .focused($focusedControl, equals: .notesTextEditor)
-                    
-                    TextField("Reward", text: $reward)
                 }
                
-                Section("Time") {
+                Section {
                     VStack {
                         TimeProposalMenu(value: $time)
                         
-                        DatePicker("Time", selection: $time, displayedComponents: .hourAndMinute)
+                        DatePicker("", selection: $time, displayedComponents: .hourAndMinute)
                             .datePickerStyle(.wheel)
                     }
+                    .padding(.vertical, 5)
+                }
+                
+                Section {
+                    TextField("Reward", text: $reward)
                 }
             }
             .formStyle(.grouped)
-            .scrollDisabled(true)
-            .defaultFocus($focusedControl, .titleTextField, priority: .automatic)
+            .navigationTitle("New habit")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(action: cancelAction){
@@ -67,6 +85,7 @@ struct AddHabitView: View {
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismissAction
+    @State private var symbole: HabitSymbole = .figureWalk
     @State private var title: String = ""
     @State private var notes: String = ""
     @State private var reward: String = ""
@@ -86,8 +105,13 @@ struct AddHabitView: View {
         let minute = Calendar.current.component(.minute, from: time)
         
         print("Add new habit")
-        let habit = Habit(title: title, notes: notes, reward: reward, hour: hour, minute: minute, symbole: "tree")
+        let habit = Habit(title: title, notes: notes, reward: reward, hour: hour, minute: minute, symbole: symbole)
         modelContext.insert(habit)
         dismissAction()
     }
+}
+
+
+#Preview {
+    AddHabitView()
 }
