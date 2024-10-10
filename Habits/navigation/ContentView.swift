@@ -33,6 +33,7 @@ struct ContentView: View {
                     AddHabitView()
                 }
         }
+        .onAppear(perform: addSampleData)
     }
     
     //MARK: - View Model
@@ -42,6 +43,11 @@ struct ContentView: View {
     
     private func addNewHabitAction() {
         isAddHabitSheetPresented.toggle()
+    }
+    
+    private func addSampleData() {
+        let habit = Habit(title: "Laufe", notes: "", reward: "", hour: 6, symbole: .figureRun)
+        modelContext.insert(habit)
     }
 }
 

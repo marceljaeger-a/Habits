@@ -12,6 +12,11 @@ struct EditHabitView: View {
     var body: some View {
         Form {
             Section {
+                StreakChart(entries: habit.entries)
+                    .padding()
+            }
+            
+            Section {
                 VStack(spacing: 25) {
                     HabitSymbolePicker(value: $editedSymbole)
                     
@@ -134,4 +139,9 @@ struct EditHabitView: View {
         habit.hour = hour
         habit.minute = minute
     }
+}
+
+
+#Preview {
+    EditHabitView(habit: .init(title: "", notes: "", reward: "", hour: 2, symbole: .bicycle))
 }
