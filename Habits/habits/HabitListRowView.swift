@@ -15,8 +15,16 @@ struct HabitListRowView: View {
             HStack {
                 habit.symbole.image.font(.title)
                 
-                Text(habit.title)
-                    .font(.headline)
+                VStack {
+                    Text(habit.title)
+                        .font(.headline)
+                    
+                    if let time = habit.time {
+                        Text(time, style: .time)
+                            .font(.callout)
+                            .foregroundStyle(colorOfHabitTimeText)
+                    }
+                }
                 
                 Spacer()
                 
@@ -89,6 +97,23 @@ struct HabitListRowView: View {
     
     private var style: Style {
         habit.hasEntryToday ? .other : .today
+    }
+    
+    private var colorOfHabitTimeText: some ShapeStyle {
+        guard habit.hasEntryToday == false else {
+            return AnyShapeStyle(.secondary)
+        }
+        
+        let componentsOfNow = Calendar.current.dateComponents([.hour, .minute, .second], from: .now)
+        guard let hour = componentsOfNow.hour, let minute = componentsOfNow.minute, let second = componentsOfNow.second else {
+            return AnyShapeStyle(.secondary)
+        }
+        
+        guard habit.hour <= hour, habit.minute <= minute, habit.second <= second else {
+            return AnyShapeStyle(.secondary)
+        }
+        
+        return AnyShapeStyle(.red.secondary)
     }
     
     private func addHabitEntry() {

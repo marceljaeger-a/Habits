@@ -19,6 +19,7 @@ import SwiftData
     @Relationship(deleteRule: .cascade, inverse: \HabitEntry.habit) var entries: Array<HabitEntry>
     var created: Date
     
+    //Returns no explicit day!
     var time: Date? {
         Calendar.current.date(from: .init(hour: hour, minute: minute, second: second))
     }
