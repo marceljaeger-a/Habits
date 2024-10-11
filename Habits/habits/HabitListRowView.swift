@@ -11,46 +11,48 @@ import SwiftData
 
 struct HabitListRowView: View {
     var body: some View {
-        HStack {
-            habit.symbole.image.font(.title)
-            
-            Text(habit.title)
-                .font(.headline)
-            
-            Spacer()
-            
-            switch style {
-            case .today:
-                ZStack(alignment: .centerFirstTextBaseline) {
-                    Image(systemName: "flame")
-                        .foregroundStyle(.gray)
-                    Image(systemName: "flame.fill")
-                        .foregroundStyle(.gray)
-                    Text("\(habit.streak)")
-                        .font(.subheadline)
-                        .fontWeight(.heavy)
-                        .foregroundStyle(.white)
+        NavigationLink(value: DetailHabitDestinationItem(habit: habit)) {
+            HStack {
+                habit.symbole.image.font(.title)
+                
+                Text(habit.title)
+                    .font(.headline)
+                
+                Spacer()
+                
+                switch style {
+                case .today:
+                    ZStack(alignment: .centerFirstTextBaseline) {
+                        Image(systemName: "flame")
+                            .foregroundStyle(.gray)
+                        Image(systemName: "flame.fill")
+                            .foregroundStyle(.gray)
+                        Text("\(habit.streak)")
+                            .font(.subheadline)
+                            .fontWeight(.heavy)
+                            .foregroundStyle(.white)
+                    }
+                    .imageScale(.large)
+                    .font(.title)
+                    .onTapGesture(perform: addHabitEntry)
+                case .other:
+                    ZStack(alignment: .centerFirstTextBaseline) {
+                        Image(systemName: "flame")
+                            .foregroundStyle(.orange)
+                        Image(systemName: "flame.fill")
+                            .foregroundStyle(.orange)
+                        Text("\(habit.streak)")
+                            .font(.subheadline)
+                            .fontWeight(.heavy)
+                            .foregroundStyle(.white)
+                    }
+                    .imageScale(.large)
+                    .font(.title)
                 }
-                .imageScale(.large)
-                .font(.title)
-                .onTapGesture(perform: addHabitEntry)
-            case .other:
-                ZStack(alignment: .centerFirstTextBaseline) {
-                    Image(systemName: "flame")
-                        .foregroundStyle(.red)
-                    Image(systemName: "flame.fill")
-                        .foregroundStyle(.red)
-                    Text("\(habit.streak)")
-                        .font(.subheadline)
-                        .fontWeight(.heavy)
-                        .foregroundStyle(.white)
-                }
-                .imageScale(.large)
-                .font(.title)
             }
         }
         .swipeActions {
-            NavigationLink(value: habit) {
+            NavigationLink(value: EditHabitDestinationItem(habit: habit)) {
                 Image(systemName: "pencil")
             }
             .tint(.accentColor)

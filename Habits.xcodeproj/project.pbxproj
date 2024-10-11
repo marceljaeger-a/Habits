@@ -18,8 +18,12 @@
 		9F0F443E2CA70C9400DF5F98 /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F443D2CA70C9400DF5F98 /* AddHabitView.swift */; };
 		9F0F44402CA715CD00DF5F98 /* EditHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F443F2CA715CD00DF5F98 /* EditHabitView.swift */; };
 		9F0F44422CA8927A00DF5F98 /* TimeProposalMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F44412CA8927A00DF5F98 /* TimeProposalMenu.swift */; };
+		9F3A00682CB820630038AF78 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3A00672CB820630038AF78 /* NavigationManager.swift */; };
 		9F8BB4F52CAAED7F007BEBA2 /* HabitSymbole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8BB4F42CAAED7F007BEBA2 /* HabitSymbole.swift */; };
 		9F8BB4F72CAAF021007BEBA2 /* HabitSymbolePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8BB4F62CAAF021007BEBA2 /* HabitSymbolePicker.swift */; };
+		9F991EFD2CB7EDC8009DF3DD /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F991EFC2CB7EDC8009DF3DD /* HabitDetailView.swift */; };
+		9F991EFF2CB7EE6D009DF3DD /* EditHabitDestinationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F991EFE2CB7EE6D009DF3DD /* EditHabitDestinationItem.swift */; };
+		9F991F012CB7EEEE009DF3DD /* DetailHabitDestinationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F991F002CB7EEEE009DF3DD /* DetailHabitDestinationItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +39,12 @@
 		9F0F443D2CA70C9400DF5F98 /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
 		9F0F443F2CA715CD00DF5F98 /* EditHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitView.swift; sourceTree = "<group>"; };
 		9F0F44412CA8927A00DF5F98 /* TimeProposalMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeProposalMenu.swift; sourceTree = "<group>"; };
+		9F3A00672CB820630038AF78 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		9F8BB4F42CAAED7F007BEBA2 /* HabitSymbole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitSymbole.swift; sourceTree = "<group>"; };
 		9F8BB4F62CAAF021007BEBA2 /* HabitSymbolePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitSymbolePicker.swift; sourceTree = "<group>"; };
+		9F991EFC2CB7EDC8009DF3DD /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
+		9F991EFE2CB7EE6D009DF3DD /* EditHabitDestinationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitDestinationItem.swift; sourceTree = "<group>"; };
+		9F991F002CB7EEEE009DF3DD /* DetailHabitDestinationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHabitDestinationItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -81,6 +89,7 @@
 				9F0F440A2CA43FFA00DF5F98 /* Habit.swift */,
 				9F8BB4F42CAAED7F007BEBA2 /* HabitSymbole.swift */,
 				9F0F440B2CA43FFA00DF5F98 /* HabitEntry.swift */,
+				9F991EFC2CB7EDC8009DF3DD /* HabitDetailView.swift */,
 				9F0F441A2CA4400900DF5F98 /* HabitsListView.swift */,
 				9F0F443D2CA70C9400DF5F98 /* AddHabitView.swift */,
 				9F8BB4F62CAAF021007BEBA2 /* HabitSymbolePicker.swift */,
@@ -96,6 +105,9 @@
 			children = (
 				9F0F440E2CA43FFA00DF5F98 /* HabitsApp.swift */,
 				9F0F440D2CA43FFA00DF5F98 /* ContentView.swift */,
+				9F991F002CB7EEEE009DF3DD /* DetailHabitDestinationItem.swift */,
+				9F991EFE2CB7EE6D009DF3DD /* EditHabitDestinationItem.swift */,
+				9F3A00672CB820630038AF78 /* NavigationManager.swift */,
 			);
 			path = navigation;
 			sourceTree = "<group>";
@@ -198,13 +210,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F8BB4F52CAAED7F007BEBA2 /* HabitSymbole.swift in Sources */,
+				9F991EFF2CB7EE6D009DF3DD /* EditHabitDestinationItem.swift in Sources */,
 				9F0F441B2CA4400900DF5F98 /* HabitsListView.swift in Sources */,
 				9F0F44142CA43FFA00DF5F98 /* Habit.swift in Sources */,
 				9F0F443E2CA70C9400DF5F98 /* AddHabitView.swift in Sources */,
 				9F0F44422CA8927A00DF5F98 /* TimeProposalMenu.swift in Sources */,
 				9F0F441D2CA4408400DF5F98 /* HabitListRowView.swift in Sources */,
+				9F991F012CB7EEEE009DF3DD /* DetailHabitDestinationItem.swift in Sources */,
+				9F3A00682CB820630038AF78 /* NavigationManager.swift in Sources */,
 				9F0F44152CA43FFA00DF5F98 /* HabitEntry.swift in Sources */,
 				9F0F44162CA43FFA00DF5F98 /* ContentView.swift in Sources */,
+				9F991EFD2CB7EDC8009DF3DD /* HabitDetailView.swift in Sources */,
 				9F0F44402CA715CD00DF5F98 /* EditHabitView.swift in Sources */,
 				9F0F44172CA43FFA00DF5F98 /* HabitsApp.swift in Sources */,
 				9F8BB4F72CAAF021007BEBA2 /* HabitSymbolePicker.swift in Sources */,

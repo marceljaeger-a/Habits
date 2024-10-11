@@ -10,12 +10,7 @@ import SwiftUI
 
 struct EditHabitView: View {
     var body: some View {
-        Form {
-            Section {
-                StreakChart(entries: habit.entries)
-                    .padding()
-            }
-            
+        Form {            
             Section {
                 VStack(spacing: 25) {
                     HabitSymbolePicker(value: $editedSymbole)
@@ -63,6 +58,7 @@ struct EditHabitView: View {
                 Button(action: presentDeleteCofirmationDialgo) {
                     Image(systemName: "trash")
                 }
+                .tint(.red)
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: saveAction) {
@@ -89,8 +85,8 @@ struct EditHabitView: View {
     
     @Bindable var habit: Habit
     
-    @Environment(\.dismiss) private var dismissAction
     @Environment(\.modelContext) private var modelContext
+    @Environment(NavigationManager.self) private var navManager
     @State private var isDeleteConfirmationDialogPresented = false
     @State private var editedSymbole: HabitSymbole = .figureWalk
     @State private var editedTitle: String = ""
@@ -124,8 +120,10 @@ struct EditHabitView: View {
     }
     
     private func deleteAction() {
-        dismissAction()
         modelContext.delete(habit)
+        for _ in 0..<navManager.path.count {
+            navManager.path.removeLast()
+        }
     }
     
     private func saveAction() {

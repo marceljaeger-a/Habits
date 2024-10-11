@@ -45,14 +45,15 @@ struct StreakChart: View {
                 }
             }
         }
-        .frame(minWidth: 200, minHeight: 275)
+        .frame(minWidth: 200, idealWidth: 200, minHeight: 275, idealHeight: 275)
         .onChange(of: presentedMonth,updateItems)
         .onChange(of: entries, updateItems)
     }
     
-    @State var items: Array<StreakChartItem>
-    @State var presentedMonth: StreakChartMonthComponent
     let entries: Array<HabitEntry>
+    
+    @State private var items: Array<StreakChartItem>
+    @State private var presentedMonth: StreakChartMonthComponent
     
     init(
         initialPresentedMonth: StreakChartMonthComponent = .current,

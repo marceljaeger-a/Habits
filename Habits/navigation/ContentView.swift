@@ -10,10 +10,13 @@ import SwiftData
 
 struct ContentView: View {
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navManager.path) {
             HabitsListView()
-                .navigationDestination(for: Habit.self) { habit in
-                    EditHabitView(habit: habit)
+                .navigationDestination(for: DetailHabitDestinationItem.self) { item in
+                    HabitDetailView(habit: item.habit)
+                }
+                .navigationDestination(for: EditHabitDestinationItem.self) { item in
+                    EditHabitView(habit: item.habit)
                 }
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
@@ -34,11 +37,13 @@ struct ContentView: View {
                 }
         }
         .onAppear(perform: addSampleData)
+        .environment(navManager)
     }
     
     //MARK: - View Model
     
     @Environment(\.modelContext) private var modelContext
+    @State private var navManager = NavigationManager()
     @State private var isAddHabitSheetPresented = false
     
     private func addNewHabitAction() {
