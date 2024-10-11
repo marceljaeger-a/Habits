@@ -99,6 +99,7 @@ struct HabitListRowView: View {
         habit.hasEntryToday ? .other : .today
     }
     
+    //Maybe it can lead to perfomance problems?!
     private var colorOfHabitTimeText: some ShapeStyle {
         guard habit.hasEntryToday == false else {
             return AnyShapeStyle(.secondary)
