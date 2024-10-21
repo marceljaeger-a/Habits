@@ -12,7 +12,7 @@ import UserNotifications
 enum UserNotificationFunctions {
     static func habitReminderNotification(of habit: Habit) -> UserNotification? {
         guard let nextDateComponents = habit.dateComponentsOfTommorow else { return nil }
-        return UserNotification(identifier: UserNotificationIdentifier(habit.notificationIdentifier), title: "Do your habit \(habit.title)!", body: "Go one step forwards!", sound: .default, time: nextDateComponents)
+        return UserNotification(identifier: UserNotificationIdentifier(habit.notificationIdentifier), title: " \(habit.title)", body: "\(habit.streak)🔥", sound: .default, time: nextDateComponents)
     }
     
     static func addNotificationOfHabitForTommorow(_ habit: Habit, notificationService: UserNotificationService) {

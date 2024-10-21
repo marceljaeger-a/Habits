@@ -15,7 +15,7 @@ struct HabitListRowView: View {
             HStack {
                 habit.symbole.image.font(.title)
                 
-                VStack {
+                VStack(alignment: .leading) {
                     Text(habit.title)
                         .font(.headline)
                     
