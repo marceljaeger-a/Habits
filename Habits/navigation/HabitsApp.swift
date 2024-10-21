@@ -15,6 +15,6 @@ struct HabitsApp: App {
             ContentView()
                 .fontDesign(.rounded)
         }
-        .modelContainer(for: Habit.self, inMemory: true)
+        .modelContainer(for: Habit.self, inMemory: false)
     }
 }

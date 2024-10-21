@@ -52,8 +52,8 @@ struct ContentView: View {
     }
     
     private func taskAction() async {
-        let habit = Habit(title: "Laufe", notes: "", reward: "", hour: 6, symbole: .figureRun)
-        modelContext.insert(habit)
+//        let habit = Habit(title: "Laufe", notes: "", reward: "", hour: 6, symbole: .figureRun)
+//        modelContext.insert(habit)
         
         //Clean up: Remove all delivered Notifications.
         UserNotificationFunctions.cleanUp(notificationService: notificationService)
