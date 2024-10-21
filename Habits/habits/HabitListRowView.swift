@@ -93,6 +93,7 @@ struct HabitListRowView: View {
     let habit: Habit
     
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.noticifationService) private var notificationService
     @State private var isDeleteConfirmationDialogPresented = false
     
     private var style: Style {
@@ -121,6 +122,8 @@ struct HabitListRowView: View {
         print("Add new entry")
         let newEntry = HabitEntry(date: .now, habit: habit)
         habit.entries.append(newEntry)
+        
+        UserNotificationFunctions.addNotificationOfHabitForTommorow(habit, notificationService: notificationService)
     }
     
     private func presentDeleteConfirmationDialog() {
@@ -128,7 +131,8 @@ struct HabitListRowView: View {
     }
     
     private func deleteHabit() {
-        print("Delete habit")
+        UserNotificationFunctions.removeNotificationsOfHabit(habit, notificationService: notificationService)
+        
         modelContext.delete(habit)
     }
 }

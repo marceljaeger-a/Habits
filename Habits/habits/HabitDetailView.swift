@@ -68,6 +68,7 @@ struct HabitDetailView: View {
     
     @Environment(NavigationManager.self) private var navManager
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.noticifationService) private var notificationService
     @State private var isDeleteConfirmationDialogPresented = false
     
     private func presentDeleteHabitConfirmationDialog() {
@@ -77,6 +78,8 @@ struct HabitDetailView: View {
     private func setStreakAction() {
         let newEntry = HabitEntry(date: .now, habit: habit)
         habit.entries.append(newEntry)
+        
+        UserNotificationFunctions.addNotificationOfHabitForTommorow(habit, notificationService: notificationService)
     }
     
     private func editHabitAction() {
@@ -84,6 +87,8 @@ struct HabitDetailView: View {
     }
     
     private func deleteAction() {
+        UserNotificationFunctions.removeNotificationsOfHabit(habit, notificationService: notificationService)
+        
         modelContext.delete(habit)
         navManager.path.removeLast()
     }

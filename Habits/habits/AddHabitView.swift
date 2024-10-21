@@ -75,6 +75,15 @@ struct AddHabitView: View {
             }
         }
         .onAppear(perform: onAppearAction)
+        .task {
+            if await notificationService.hasAuthorization() == false {
+                do {
+                    try await notificationService.requestAuthorization()
+                } catch {
+                    print(error)
+                }
+            }
+        }
     }
     
     //MARK: - View Model
@@ -85,6 +94,7 @@ struct AddHabitView: View {
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismissAction
+    @Environment(\.noticifationService) private var notificationService
     @State private var symbole: HabitSymbole = .figureWalk
     @State private var title: String = ""
     @State private var notes: String = ""
@@ -107,6 +117,12 @@ struct AddHabitView: View {
         print("Add new habit")
         let habit = Habit(title: title, notes: notes, reward: reward, hour: hour, minute: minute, symbole: symbole)
         modelContext.insert(habit)
+        do {
+            try modelContext.save()
+            UserNotificationFunctions.addNotificationOfHabitForTommorow(habit, notificationService: notificationService)
+        } catch {
+            print(error)
+        }
         dismissAction()
     }
 }

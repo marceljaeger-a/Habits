@@ -71,7 +71,6 @@ private struct TimeProposalMenuLayout: Layout {
         }
     }
     
-    
     private func getHighestHeight(in subviews: Subviews, proposal: ProposedViewSize) -> Double {
         var height = 0.0
         for subview in subviews {

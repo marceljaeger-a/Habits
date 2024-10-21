@@ -36,13 +36,14 @@ struct ContentView: View {
                     AddHabitView()
                 }
         }
-        .onAppear(perform: addSampleData)
+        .task(taskAction)
         .environment(navManager)
     }
     
     //MARK: - View Model
     
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.noticifationService) private var notificationService
     @State private var navManager = NavigationManager()
     @State private var isAddHabitSheetPresented = false
     
@@ -50,9 +51,12 @@ struct ContentView: View {
         isAddHabitSheetPresented.toggle()
     }
     
-    private func addSampleData() {
+    private func taskAction() async {
         let habit = Habit(title: "Laufe", notes: "", reward: "", hour: 6, symbole: .figureRun)
         modelContext.insert(habit)
+        
+        //Clean up: Remove all delivered Notifications.
+        UserNotificationFunctions.cleanUp(notificationService: notificationService)
     }
 }
 

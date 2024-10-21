@@ -87,6 +87,7 @@ struct EditHabitView: View {
     
     @Environment(\.modelContext) private var modelContext
     @Environment(NavigationManager.self) private var navManager
+    @Environment(\.noticifationService) private var notificationService
     @State private var isDeleteConfirmationDialogPresented = false
     @State private var editedSymbole: HabitSymbole = .figureWalk
     @State private var editedTitle: String = ""
@@ -120,6 +121,7 @@ struct EditHabitView: View {
     }
     
     private func deleteAction() {
+        UserNotificationFunctions.removeNotificationsOfHabit(habit, notificationService: notificationService)
         modelContext.delete(habit)
         for _ in 0..<navManager.path.count {
             navManager.path.removeLast()
@@ -136,6 +138,8 @@ struct EditHabitView: View {
         habit.notes = editedNotes
         habit.hour = hour
         habit.minute = minute
+        
+        UserNotificationFunctions.addNotificationOfHabitForTommorow(habit, notificationService: notificationService)
     }
 }
 

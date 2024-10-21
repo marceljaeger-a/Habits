@@ -18,10 +18,31 @@ import SwiftData
     var symbole: HabitSymbole
     @Relationship(deleteRule: .cascade, inverse: \HabitEntry.habit) var entries: Array<HabitEntry>
     var created: Date
+    var notificationIdentifier: String = UUID().uuidString
     
     //Returns no explicit day!
     var time: Date? {
         Calendar.current.date(from: .init(hour: hour, minute: minute, second: second))
+    }
+    
+    var dateComponents: DateComponents {
+        DateComponents(hour: hour, minute: minute, second: second)
+    }
+    
+    var dateComponentsOfTommorow: DateComponents? {
+        let tommorow = Calendar.current.date(byAdding: .day, value: 1, to: .now)
+        
+        guard let tommorow else {
+            return nil
+        }
+        
+        let monthAndDayOfToday = Calendar.current.dateComponents([.month, .day, .year], from: tommorow)
+        
+        var components = self.dateComponents
+        components.month = monthAndDayOfToday.month
+        components.day = monthAndDayOfToday.day
+        components.year = monthAndDayOfToday.year
+        return components
     }
     
     var streak: Int {
