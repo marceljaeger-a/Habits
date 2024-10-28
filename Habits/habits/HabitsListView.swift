@@ -38,6 +38,6 @@ struct HabitsListView: View {
     
     //MARK: - View Model
     
-    @Query(filter: Habit.hasEntryTodayPredicate, sort: [SortDescriptor(\Habit.hour, order: .reverse), SortDescriptor(\Habit.minute, order: .reverse), SortDescriptor(\Habit.second, order: .reverse)]) var otherHabits: Array<Habit>
-    @Query(filter: Habit.hasNoEntryTodayPredicate, sort: [SortDescriptor(\Habit.hour, order: .reverse), SortDescriptor(\Habit.minute, order: .reverse), SortDescriptor(\Habit.second, order: .reverse)]) var todayHabits: Array<Habit>
+    @Query(filter: Habit.hasEntryTodayPredicate, sort: [SortDescriptor(\Habit.hour, order: .forward), SortDescriptor(\Habit.minute, order: .forward), SortDescriptor(\Habit.second, order: .forward)]) var otherHabits: Array<Habit>
+    @Query(filter: Habit.hasNoEntryTodayPredicate, sort: [SortDescriptor(\Habit.hour, order: .forward), SortDescriptor(\Habit.minute, order: .forward), SortDescriptor(\Habit.second, order: .forward)]) var todayHabits: Array<Habit>
 }
