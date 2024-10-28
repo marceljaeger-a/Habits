@@ -26,7 +26,7 @@ struct StreakMark: ChartContent {
 struct StreakChartItem: Identifiable, Hashable {
     enum Status {
         case isStreak
-        case noStreak
+        case noEntry
         case none
     }
     
@@ -52,7 +52,7 @@ struct StreakChartItem: Identifiable, Hashable {
         switch status {
         case .isStreak:
             "flame.fill"
-        case .noStreak:
+        case .noEntry:
             "circle.fill"
         case .none:
             "circle.fill"
@@ -63,7 +63,7 @@ struct StreakChartItem: Identifiable, Hashable {
         switch status {
         case .isStreak:
             .title
-        case .noStreak:
+        case .noEntry:
             .title2
         case .none:
             .body
@@ -74,7 +74,7 @@ struct StreakChartItem: Identifiable, Hashable {
         switch status {
         case .isStreak:
                 .orange
-        case .noStreak:
+        case .noEntry:
                 .secondary
         case .none:
                 .secondary

@@ -46,53 +46,64 @@ import SwiftData
     }
     
     var streak: Int {
-        //1. Get all dates of entries in a sorted array
-        let dates = entries.map { $0.date }.sorted()
+        var count = 0
         
-        //2. Set states for algorithm
-        var firstDate: Date? = nil
-        var latestDate: Date? = nil
+        //1. Alle entries sortiert in Dates umwandeln
+        let allEntryDates = entries.map { $0.date }.sorted()
         
-        //3. Calculate firstDate of latest streak
-        for date in dates {
-            if let latestDate {
-                if Calendar.current.isDate(latestDate.addingTimeInterval(60 * 60 * 24), inSameDayAs: date) == false {
-                    firstDate = nil
+        //2. latestDate Variable erstellen.
+        var latestIteratedDate: Date? = nil
+        
+        //3. Iteriere über alle Dates
+        for date in allEntryDates {
+            
+            //3.1. Wenn latestDate != nil UND wenn latestDate + 1 Tag nicht in selben Tag wie iterierter Tag ist | -> Zähler zurücksetzen
+            if let latestIteratedDate {
+                if let nextDateOfLatestDate = Calendar.current.date(byAdding: .day, value: 1, to: latestIteratedDate) {
+                    if Calendar.current.isDate(nextDateOfLatestDate, inSameDayAs: date) == false {
+                        count = 0
+                    }
+                }else {
+                    //COUNT ZURÜCKSETZEN ???
                 }
             }
-            if firstDate == nil {
-                firstDate = date
+            
+            //3.2. Zähler um eins erhöhen und latestDate setzen.
+            count += 1
+            latestIteratedDate = date
+            
+        }
+        //4. Zähler zurückgeben
+        return count
+    }
+    
+    func streakedEntries() -> Array<HabitEntry> {
+        var streakedEntries: Array<HabitEntry> = []
+        
+        //1. Alle entries sortiert nach Date
+        let allEntrySortedByDates = entries.sorted(using: KeyPathComparator(\.date))
+        
+        //2. latestDate Variable erstellen
+        var latestIteratedDate: Date? = nil
+        
+        //3. Iteriere über alle entries
+        for entry in entries {
+            
+            if let latestIteratedDate {
+                if let nextDateOfLatestDate = Calendar.current.date(byAdding: .day, value: 1, to: latestIteratedDate) {
+                    if Calendar.current.isDate(nextDateOfLatestDate, inSameDayAs: entry.date) == false {
+                        streakedEntries = []
+                    }
+                }else {
+                    //???
+                }
             }
-            latestDate = date
+            
+            streakedEntries.append(entry)
+            latestIteratedDate = entry.date
         }
         
-        //4. Check if there is current streak
-        guard let firstDate else {
-            return 0
-        }
-        
-        //5. React to exceptions, for example, if there is only one entry.
-        if dates.count == 1 {
-            //6. Cehck if the one date is today
-            if Calendar.current.isDate(firstDate, inSameDayAs: .now) {
-                return 1
-            }else {
-                return 0
-            }
-        }
-        
-        //7. Check if there is a last data in the array and if it isn't equal to first date
-        let lastDate = dates.last
-        guard let lastDate, firstDate != lastDate else {
-            return 1
-        }
-        
-        //8. Calculate days between first and last date
-        let startOfFirstDate = Calendar.current.startOfDay(for: firstDate)
-        let startOfLastDate = Calendar.current.startOfDay(for: lastDate)
-        let interval = DateInterval(start: startOfFirstDate, end: startOfLastDate)
-        let days = interval.duration / 60 / 60 / 24
-        return Int(days.rounded())
+        return streakedEntries
     }
     
     var hasEntryToday: Bool {

@@ -88,7 +88,7 @@ struct StreakChart: View {
             let status: StreakChartItem.Status = if daysOfHabitEntries.contains(day) {
                 .isStreak
             }else if day <= dayOfToday {
-                .noStreak
+                .noEntry
             } else {
                 .none
             }
